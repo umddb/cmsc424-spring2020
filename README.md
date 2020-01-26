@@ -1,2 +1,4 @@
 # cmsc424-spring2020
-Repository for CMSC 424, Spring 2020, University of Maryland
+Class repository for CMSC 424, Spring 2020, University of Maryland. 
+
+This repository is used primarily to publish the assignments. 
