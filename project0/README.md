@@ -143,7 +143,6 @@ IPython is an enhanced command shell for Python, that offers enhanced introspect
 	``` 
 This will start a server on the VM, listening on port 8888. We will access it from the **host** (as discussed above, the VagrantFile maps the 8888 port on the guest VM to the 8888 port on the host VM). To do that, simply start the browser, and point it to: http://127.0.0.1:8888
 
-* You should see the Notebooks in the `project0/` directory. Click to open the "IPython Getting Started" Notebook, and follow the instruction therein.
+* You should see the Notebooks in the `project0/` directory. Click to open the "Jupyter Getting Started" Notebook, and follow the instruction therein.
 
 * The second Notebook ("Basics of SQL") covers basics of SQL, by connecting to your local PostgreSQL instance. The Notebook also serves as an alternative mechanism to run queries. However, in order to use that, you must set up a password in `psql` using `\password` (set the password to be `vagrant`).
-
