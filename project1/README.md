@@ -47,15 +47,15 @@ You are also provided with a Python file `SQLTesting.py` for testing your answer
 
 - We recommend that you use `psql` to design your queries, and then paste the queries to the `queries.py` file, and confirm it works.
 
-- SQLTesting takes quite a few options: use `python SQLTesting.py -h` to see the options.
+- SQLTesting takes quite a few options: use `python3 SQLTesting.py -h` to see the options.
 
-- To get started with SQLTesting, do: `python SQLTesting.py -v -i` -- that will run each of the queries and show you your answer.
+- To get started with SQLTesting, do: `python3 SQLTesting.py -v -i` -- that will run each of the queries and show you your answer.
 
-- If you want to run your query for Question 1, use: `python SQLTesting.py -q 1`. 
+- If you want to run your query for Question 1, use: `python3 SQLTesting.py -q 1`. 
 
 - `-i` flag to SQLTesting will run all the queries, one at a time (waiting for you to press Enter after each query).
 
-- **Note**: We will essentially run a modified version of `SQLTesting.py` that compares the returned answers against correct answers. So it imperative that `python SQLTesting.py` runs without errors.
+- **Note**: We will essentially run a modified version of `SQLTesting.py` that compares the returned answers against correct answers. So it imperative that `python3 SQLTesting.py` runs without errors.
 
 ### Submission Instructions
 Submit the `queries.py` file using ELMS.
