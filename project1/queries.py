@@ -1,6 +1,6 @@
 queries = ["" for i in range(0, 15)]
 
-### 0. Report the three medalists and their winning times for ``100m running'' at 2000 Olympics. Order by medalist names.
+### 0. Report the three medalists and their winning times for ``100m Men's running'' at 2000 Olympics. Order by medalist names.
 ### Output column order: player_name, medal
 queries[0] = """
 select players.name as player_name, medal
@@ -18,6 +18,7 @@ select 0;
 
 ### 2. For 2004 Olympics, generate a list - (birthyear, num_players, num_gold_medals) - containing the years in which the atheletes were born, 
 ### the number of players born in each year, and the number of gold medals won by the players born in each year.
+### HINT: Use "extract" to operate on dates. Note you can use "extract" in a 'group by' clause as well.
 ### Order output by birthyear.
 ### Output columns: birthyear, num_players, num_gold_medals
 queries[2] = """
@@ -74,6 +75,8 @@ select 0;
 """
 
 ### 10. Which country had the largest percentage of players (who won a medal of course) whose names started with a vowel ?
+### In other words, for each country, compute a ratio: "No. of players with names starting with a vowel"/"No. of players", and find the country with the largest ratio.
+### The "who won a medal of course" is re-emphasizing that the dataset only contains players who won a medal.
 ### Output Column: Country Name
 queries[10] = """
 select 0;

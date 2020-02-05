@@ -20,24 +20,43 @@ cur = conn.cursor()
 
 totalscore = 0
 for i in range(0, 14):
-	# If a query is specified by -q option, only do that one
-	if args.query is None or args.query == i:
-		try:
-			if interactive:
-			    os.system('clear')
-			print("========== Executing Query {}".format(i))
-			print(queries[i])
-			cur.execute(queries[i])
-			ans = cur.fetchall()
+    # If a query is specified by -q option, only do that one
+    if args.query is None or args.query == i:
+        try:
+            if interactive:
+                os.system('clear')
+            print("========== Executing Query {}".format(i))
+            print(queries[i])
+            cur.execute(queries[i])
 
-			print("--------- Your Query Answer ---------")
-			for t in ans:
-				print(t)
-			print("")
+            if i not in [5, 6, 8, 9]:
+                ans = cur.fetchall()
 
-			if interactive:
-				input('Press enter to proceed')
-				os.system('clear')
-		except:
-			print(sys.exc_info())
-			raise
+                print("--------- Your Query Answer ---------")
+                for t in ans:
+                    print(t)
+                print("")
+            else:
+                if i in [5, 8, 9]:
+                    print("--------- Running SELECT * FROM IndividualMedals LIMIT 5 -------")
+                    cur.execute("select * from IndividualMedals limit 5")
+                    ans = cur.fetchall()
+                    print("-- Result")
+                    for t in ans:
+                        print(t)
+                    print("")
+                if i == 6:
+                    print("--------- Running SELECT * FROM TeamMedals LIMIT 5 -------")
+                    cur.execute("select * from TeamMedals limit 5")
+                    ans = cur.fetchall()
+                    print("-- Result")
+                    for t in ans:
+                        print(t)
+                    print("")
+                
+            if interactive:
+                input('Press enter to proceed')
+                os.system('clear')
+        except:
+            print(sys.exc_info())
+            raise
