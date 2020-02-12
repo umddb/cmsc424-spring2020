@@ -38,6 +38,7 @@ for i in range(0, 14):
                 print("")
             else:
                 if i in [5, 8, 9]:
+                    conn.commit()
                     print("--------- Running SELECT * FROM IndividualMedals LIMIT 5 -------")
                     cur.execute("select * from IndividualMedals limit 5")
                     ans = cur.fetchall()
@@ -46,6 +47,7 @@ for i in range(0, 14):
                         print(t)
                     print("")
                 if i == 6:
+                    conn.commit()
                     print("--------- Running SELECT * FROM TeamMedals LIMIT 5 -------")
                     cur.execute("select * from TeamMedals limit 5")
                     ans = cur.fetchall()
