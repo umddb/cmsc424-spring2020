@@ -1,0 +1,20 @@
+<h4> Summary Statistics </h4>
+    <table style="border:2px solid black; padding: 10px; border-collapse: collapse">
+    <tr><th style="border:2px solid black; text-align:center">Calendar Title</th>
+            <th style="border:2px solid black; text-align:center"># Waiting Response</th>
+            <th style="border:2px solid black; text-align:center"># Accepted</th>
+            <th style="border:2px solid black; text-align:center"># Declined</th>
+            <th style="border:2px solid black; text-align:center"># Tentative</th>
+            <th style="border:2px solid black; text-align:center">Total</th>
+    </tr>
+    {% for cname, wr, ac, de, te, total in summary_tuples %}
+    <tr>
+    <td style="border:2px solid black; text-align:center"> {{ cname }}
+    <td style="border:2px solid black; text-align:center"> {{ wr }} 
+    <td style="border:2px solid black; text-align:center"> {{ ac }} 
+    <td style="border:2px solid black; text-align:center"> {{ de }} 
+    <td style="border:2px solid black; text-align:center"> {{ te }} 
+    <td style="border:2px solid black; text-align:center"> {{ total }} 
+    </tr>
+    {% endfor %}
+</table>

@@ -1,0 +1,11 @@
+{% if calendar_id %}
+    <h4> List of Calendar Events </h4>
+    <table style="border:2px solid black; padding: 10px; border-collapse: collapse">
+    <tr><th style="border:2px solid black">Event Title</th><th style="border:2px solid black">Start Time</th><th style="border:2px solid black">End Time</th></tr>
+    {% for e in event_list %}
+    <tr>
+    <td style="border:2px solid black"> {{ e.title }}<td style="border:2px solid black"> {{ e.start_time }} <td style="border:2px solid black"> {{ e.end_time }} </tr>
+    </tr>
+    {% endfor %}
+    </table>
+{% endif %}
