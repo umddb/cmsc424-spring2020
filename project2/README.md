@@ -14,7 +14,7 @@ Submit all the files (E/R diagram as a PDF, the relational schema in a text file
 
 ### Getting Started
 As before, we have provided with a VagrantFile, that installs Django and sets up a few port forwards. 
-After logging into the virtual machine with `vagrant ssh`, go to: `/vagrant/calendar/` and do `python3 manage.py runserver 0.0.0.0:8888`.
+After logging into the virtual machine with `vagrant ssh`, go to: `/vagrant/calendarsite/` and do `python3 manage.py runserver 0.0.0.0:8888`.
 
 This starts a webserver at port 8888, using our application code and data (that is already loaded). Go to: `http://localhost:8888/mycalendar/` for 
 the main index page of the web application. See below for more details on the application.
