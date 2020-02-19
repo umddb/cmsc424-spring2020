@@ -72,12 +72,11 @@ Vagrant.configure("2") do |config|
      apt-get update
      apt install -y python3-pip python3-dev 
      apt install -y postgresql postgresql-contrib python-psycopg2 libpq-dev
-     apt install -y sqlite3
 
      pip3 install psycopg2
      pip3 install django
      sudo -u postgres createuser -s vagrant
      sudo -u vagrant createdb vagrant
-     echo "alter user vagrant with password 'vagrant';" | psql
+     echo "alter user vagrant with password 'vagrant';" | sudo -u postgres psql
   SHELL
 end
