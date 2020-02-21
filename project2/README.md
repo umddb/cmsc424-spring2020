@@ -59,13 +59,14 @@ There are three relationships here:
 If you open the database using `sqlite3 calendarsite/db.sqlite3`, you can directly see the tables being created. The command `.schema` will show you all the tables that have been created.
 
 The provided application currently has six types of URLs/views/webpages: 
-- **mainindex**: Main "index" page, where we simply display a list of users. (example: http://localhost:8888/mycalendar/)
-- **userindex**: User "index" page, which shows the list of calendars owned by the user. (example: http://localhost:8888/mycalendar/user/1). This is currently *not implemented*
+- **mainindex**: Main "index" page, where we simply display a list of users. (example: http://localhost:8888/mycalendar/). Clicking on a user name would take us to `mycalendar/user/user_id`, but that page (`userindex`) is not
+implemented yet.
+- **userindex**: User "index" page, which shows the list of calendars owned by the user. (example: http://localhost:8888/mycalendar/user/1). This is currently *not implemented*.
 - **eventindex**: Event "index" page, which shows the details for an event. (example: http://localhost:8888/mycalendar/event/11)
 - **calendarindex**: Shows the events in a given calendar, along with the date, time, and status. (example: http://localhost:8888/mycalendar/calendar/1)
-- **createevent**: This is the page where a user can create an event by choosing the requisite information, and selecting a group of calendars (example: http://localhost:8888/mycalendar/user/1/create)
+- **createevent**: This is the page where a user can create an event by choosing the requisite information, and selecting a group of calendars (example: http://localhost:8888/mycalendar/user/1/createevent)
 - **waiting**: This is the page where a user can see all the events that are in waiting state in one of their calendars, and take action on them (example: http://localhost:8888/mycalendar/waiting/user/1/calendar/1). See below for more details.
-- **summary**: This page is intended to show some statistics about the data in the database. See below for the functionality to be implemented (http://localhost:8888/mycalendar/summary)
+- **summary**: This page is intended to show some statistics about the data in the database. Currently some *dummy data* is being sent to the template to be displayed. See below for the functionality to be implemented (http://localhost:8888/mycalendar/summary)
 
 *Typically you would want to do some authorizations to separate out the different functionality. This is easy to add by having users, and using `sessions`. We will not worry about it for now. Our focus is on designing the E/R model and the schema, and understanding how to use Django.*
 
@@ -74,11 +75,12 @@ The provided application currently has six types of URLs/views/webpages:
 All your modifications will be to the `views.py` file, `urls.py` file, or to one of the template files in `mycalendar/templates/mycalendar`. Specifically, the following
 pieces need to be fixed. First 4 are 2 pts each, the last two are 4 pts each.
 
-1. Modify `eventindex.html` template file to list the name of the user who created the event.
+1. Modify `eventindex.html` template file to list the name of the user who created the event (say in the next row after "Event Title").
 1. Modify `calendarindex.html` template file so that the `Event Titles` are *clickable*, i.e., they are links which take to the detailed Event page (i.e., to pages like: http://localhost:8888/mycalendar/event/11)
-1. Modify `calendarindex.html` template file to show the Events sorted by time, and separated by the days. In other words, there should be separate table for each date in order. 
+1. Modify `calendarindex.html` template file to show the Events sorted by time, and separated by the days. In other words, there should be separate table for each date in order. You will likely have to modify the corresponding
+view in the `views.py` file as well.
 1. Modify the function `summary` in `views.py` to construct the appropriate summary statistics to be sent to the template file. 
-1. Analogous to **createevent**, add a new path: **modifyevent**. If a user were to go to: http://localhost:8888/mycalendar/modifyevent/11, they should be able to modify the details like the start/end time, event name, and who was invited. All `status` should be set to 'WR'. This will require adding a new path to `urls.py`, addition of a new template file `modifyevent.html`, and a new function in `views.py`. Use `createevent` as a starting point -- a lot of the code can be reused.
+1. Analogous to **createevent**, add a new path: **modifyevent**. If a user were to go to: http://localhost:8888/mycalendar/modifyevent/11, they should be able to modify the details like the start/end time, event name, and who was invited. All `status` should be set to 'WR'. This will require adding a new path to `urls.py`, addition of a new template file `modifyevent.html`, and a new function in `views.py`. Use `createevent` as a starting point -- a lot of the code can be reused. You can `redirect` to `createdevent` (as done by `createevent`) or add a new `modifiedevent` view.
 1. Implement the `waiting` page. Here a user can see all the events that are currently in *WR* state, and can modify the status for any of them, and then press submit to save the changes. The user is not required to set a new status on all of the events that are currently awaiting response. 
 
 
