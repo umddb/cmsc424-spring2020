@@ -4,7 +4,7 @@
 
 ### Setup
 
-As before we have created a VagrantFile for you. The main differences here are that we have loaded a skewed database (`flightsskewed`), and also installed Java. Start by doing `vagrant up` and `vagrant ssh` as usual. 
+As before we have created a VagrantFile for you. The main differences here are that we have loaded a skewed database (`synthetic`), and also installed Java. Start by doing `vagrant up` and `vagrant ssh` as usual. 
 
 ### Assignment Questions
 
@@ -53,7 +53,7 @@ order by birthyear asc
 ```
 
 ---
-**Question 3 (.5 pt)**: Similarly draw the query plan for the following query, and annotate which operators are responsible for creating `temp1`, `temp2`, and the final
+**Question 3 (.5 pt)**: Similarly draw the query plan for the following query, and annotate which operators are responsible for creating `temp`, and the final
 answer (Question 7 from Project 1).
 ```
 with temp as (
@@ -89,14 +89,14 @@ where R.B = S.B and S.C = T.C and T.C = 48;
 
 ---
 **Question 5 (1 pt)**: [Trigger] 
-Let's create a table `MedalCounts(player_id, num_medals)` to keep track of the total number of medals for all players. Since this is a derived
+Let's create a table `MedalCounts(player_id, name, num_medals)` to keep track of the total number of medals for all players (that have at least one medal). Since this is a derived
 table (and not a view), it will not be kept up-to-date by the database system.  Use the following command for creating the table:
 ```
 create table if not exists MedalCounts as
     select p.player_id, name, count(*) as num_medals
     from results r, players p
     where r.player_id = p.player_id
-    group by p.player_id, name
+    group by p.player_id, name;
 ```
 
 Write a `trigger` to keep this new table updated when a new entry is inserted into or a row is deleted from the `results` table. Remember the `player_id` corresponding
@@ -120,7 +120,7 @@ file (`JDBCExample.java`). To run the JDBCExample.java file, do:
 
 Your task to write a JDBC program **that will take in JSON updates and insert appropriate data into the database.** 
 Two types of updates should be supported:
-- New `event', where information about a new event is provided, in the following format. You can assume that the foreign key reference is to one of the two olympics, eventtype is one of "ATH" or "SWI", and all the other fields are valid.
+- New `event`, where information about a new event is provided, in the following format. You can assume that the foreign key reference is to one of the two olympics, eventtype is one of "ATH" or "SWI", and all the other fields are valid.
 ```
 { "newevent": 
 	{

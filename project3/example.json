@@ -1,3 +1,2 @@
 { "newevent": { "event_id": "E157", "name": "Quadruple Jump Men", "eventtype": "ATH", "olympic_id": "SYD2000", "is_team_event": "0", "num_players_in_team": "-1", "result_noted_in": "meters" } }
-{ "medalinformation": { "event_id": "E157", "players_and_medals": [ {"player_id": "EGBELAAR01", "medal": "GOLD", "result": "100"}, {"player_id": "NELSOADA01", "medal": "SILVER", "result": "99"}, {"player_id": "POPOVALE01", "medal": "BRONZE", "result": "98"} ] }
-}
+{ "medalinformation": { "event_id": "E157", "players_and_medals": [ {"player_id": "EGBELAAR01", "medal": "GOLD", "result": "100"}, {"player_id": "NELSOADA01", "medal": "SILVER", "result": "99"}, {"player_id": "POPOVALE01", "medal": "BRONZE", "result": "98"} ] } }
