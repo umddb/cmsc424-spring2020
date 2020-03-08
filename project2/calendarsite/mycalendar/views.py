@@ -14,7 +14,7 @@ def mainindex(request):
         return render(request, 'mycalendar/index.html', context)
 
 def userindex(request, user_id):
-        context = { 'calendar_list': User.objects.get(pk=user_id).calendar_set }
+        context = { 'user': User.objects.get(pk=user_id), 'calendar_list': User.objects.get(pk=user_id).calendar_set.all() }
         return render(request, 'mycalendar/userindex.html', context)
 
 def eventindex(request, event_id):
