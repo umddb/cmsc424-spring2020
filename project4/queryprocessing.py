@@ -299,7 +299,7 @@ class SortMergeJoin(Operator):
 # The input is two relations with identical schema, and the output is: left_child INTERSECT right_child
 # By default, SQL INTERSECTION removes duplicates -- our implementation may or may not remove duplicates based on the flag 'keep_duplicates' -- you have to implement both
 # Easiest way to implement this operator is through using a Hash Table, similarly to the Hash Join above
-class SetIntersect(Operator):
+class SetIntersection(Operator):
 	def __init__(self, left_child, right_child, keep_duplicates = False):
 		self.left_child = left_child
 		self.right_child = right_child

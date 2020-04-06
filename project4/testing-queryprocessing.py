@@ -111,16 +111,6 @@ def query7c():
 	for t in aggr.get_next():
 		print("---> " + str(t))
 
-# Set minus
-def query8a():
-	scan1 = SequentialScan(db1.getRelation("instructor"))
-	scan2 = SequentialScan(db1.getRelation("instructor_2"))
-	sm = SetMinus(scan1, scan2, keep_duplicates = True)
-	print("==================== Executing A Set Minus Operation ================")
-	sm.init()
-	for t in sm.get_next():
-		print("---> " + str(t))
-
 def query8b():
 	scan1 = SequentialScan(db1.getRelation("instructor"))
 	scan2 = SequentialScan(db1.getRelation("instructor_2"))
