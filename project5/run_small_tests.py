@@ -11,6 +11,8 @@ import errno
 import signal
 import pickle
 
+import copy
+
 from pyspark import SparkContext
 from functions import *
 
@@ -99,7 +101,7 @@ def run_one_test(func, expected_output, test_no, max_score):
     try:
 	print("=========================== Task {}".format(test_no))
         ans = func()
-        all_found_answers.append(ans)
+        all_found_answers.append(copy.deepcopy(ans))
         for t in ans:
             print(t)
 
@@ -127,7 +129,9 @@ def execute_task2():
 def execute_task3():
 	nobelRDD = sc.textFile("datafiles/prize.json")
 	task3_result = task3(nobelRDD)
-        return task3_result.takeOrdered(10)
+        ret = task3_result.takeOrdered(10)
+        ret_sorted = [(x[0], sorted(x[1])) for x in ret]
+        return ret_sorted
 
 def execute_task4():
 	logsRDD = sc.textFile("datafiles/NASA_logs_sample.txt")
@@ -143,7 +147,9 @@ def execute_task5():
 def execute_task6():
 	logsRDD = sc.textFile("datafiles/NASA_logs_sample.txt")
 	task6_result = task6(logsRDD, '01/Jul/1995', '02/Jul/1995')
-        return task6_result.takeOrdered(10)
+        ret = task6_result.takeOrdered(10)
+        ret_sorted = [(x[0], (sorted(x[1][0]), sorted(x[1][1]))) for x in ret]
+        return ret_sorted
 
 def execute_task7():
 	nobelRDD = sc.textFile("datafiles/prize.json")
@@ -184,6 +190,6 @@ for ix, f in enumerate([execute_task1, execute_task2, execute_task3, execute_tas
 
 
 #with open('small_results.pickle', 'wb') as token:
-#pickle.dump(all_found_answers, token)
+#    pickle.dump(all_found_answers, token)
 
 print(results_json)
