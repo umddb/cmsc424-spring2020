@@ -10,7 +10,7 @@ import random
 #####################################################################################################
 
 def SubtractTen(tstate, relation, primary_id):
-	Subtract(tstate, relation, 10)
+	Subtract(tstate, relation, primary_id, 10)
 
 def Subtract(tstate, relation, primary_id, val):
 	tup = relation.getTuple(primary_id)
